@@ -1,0 +1,34 @@
+.x-stroke-1 {
+  stroke-dashoffset: 112;
+  animation: strokeX 0.25s forwards;
+}
+
+.x-stroke-2 {
+  stroke-dashoffset: 112;
+  animation: strokeX 0.25s forwards 0.25s;
+}
+
+.o-stroke {
+  stroke-dashoffset: 251;
+  animation: strokeO 0.5s forwards;
+}
+
+@keyframes strokeX {
+  from {
+    stroke-dashoffset: 112;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes strokeO {
+  from {
+    stroke-dashoffset: 251;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
