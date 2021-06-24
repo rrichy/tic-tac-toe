@@ -4,11 +4,11 @@ import Game from "./components/game";
 const Mode = (props) => {
   return (
     <div id="mode">
-      <p id="p1">Player vs.</p>
-      <button id="comp" value="ai" onClick={props.onClick}>
+      <p style={{ gridArea: "p1" }}>Player vs.</p>
+      <button value="ai" style={{ gridArea: "comp" }} onClick={props.onClick}>
         Computer
       </button>
-      <button id="p2" value="player" onClick={props.onClick}>
+      <button value="player" style={{ gridArea: "p2" }} onClick={props.onClick}>
         Player
       </button>
     </div>

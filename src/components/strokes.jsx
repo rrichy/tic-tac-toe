@@ -6,7 +6,7 @@ const StrokeX = ({ strokeColor = "green" }) => {
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
       <path
         className="x-stroke-1"
-        d="M16.777103,12.491441C55.889932,45.070127,69.234309,58.715259,86.535984,87.244617"
+        d="M89.296889,10.491441Q53.036996,54.874655,16.777103,80.827167"
         style={{
           fill: "none",
           stroke: strokeColor,
@@ -18,7 +18,7 @@ const StrokeX = ({ strokeColor = "green" }) => {
       />
       <path
         className="x-stroke-2"
-        d="M89.296889,10.491441Q53.036996,54.874655,16.777103,80.827167"
+        d="M16.777103,12.491441C55.889932,45.070127,69.234309,58.715259,86.535984,87.244617"
         style={{
           fill: "none",
           stroke: strokeColor,
@@ -52,4 +52,54 @@ const StrokeO = ({ strokeColor = "red" }) => {
   );
 };
 
-export { StrokeX, StrokeO };
+const StrokeLine = ({ strokeColor = "black" }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 100 100"
+      className="l-stroke"
+    >
+      <line
+        className="l-stroke"
+        x1="-43.522097"
+        y1="0"
+        x2="23.147903"
+        y2="0"
+        transform="matrix(1 0 0 1 60.19209749999999 50)"
+        style={{
+          fill: "none",
+          stroke: strokeColor,
+          strokeWidth: "4",
+          strokeLinecap: "round",
+        }}
+      />
+    </svg>
+  );
+};
+
+const StrokeSlant = ({ strokeColor = "black" }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 100 100"
+      className="s-stroke"
+    >
+      <line
+        className="s-stroke"
+        x1="-33.335000"
+        y1="-36.716518"
+        x2="33.335000"
+        y2="29.953482"
+        transform="matrix(1 0 0 1 50.00500000000000 53.38651800000000)"
+        style={{
+          fill: "none",
+          stroke: strokeColor,
+          strokeWidth: "4",
+          strokeLinecap: "round",
+        }}
+      />
+    </svg>
+  );
+};
+
+export { StrokeX, StrokeO, StrokeLine, StrokeSlant };

@@ -13,6 +13,18 @@
   animation: strokeO 0.5s forwards;
 }
 
+.l-stroke {
+  position: absolute;
+  stroke-dasharray: 67;
+  animation: strokeL 0.5s forwards;
+}
+
+.s-stroke {
+  position: absolute;
+  stroke-dasharray: 95;
+  animation: strokeS 0.5s forwards;
+}
+
 @keyframes strokeX {
   from {
     stroke-dashoffset: 112;
@@ -26,6 +38,26 @@
 @keyframes strokeO {
   from {
     stroke-dashoffset: 251;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes strokeL {
+  from {
+    stroke-dashoffset: 67;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes strokeS {
+  from {
+    stroke-dashoffset: 95;
   }
 
   to {
