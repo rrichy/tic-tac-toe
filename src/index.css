@@ -1,40 +1,15 @@
-* {
-  --board-size: 300px;
+#root {
+  position: absolute;
+  width: calc(320px + 4 * 2px);
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 #mode {
-  width: var(--board-size);
+  display: -ms-grid;
   display: grid;
-  grid-template-areas:
-    "p1 comp"
-    "p1 p2";
+      grid-template-areas: "p1 comp" "p1 p2";
 }
-
-#p1 {
-  grid-area: p1;
-}
-#comp {
-  grid-area: comp;
-}
-#p2 {
-  grid-area: p2;
-}
-
-#board {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  height: var(--board-size);
-  width: var(--board-size);
-}
-
-.grid-item {
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  height: calc(var(--board-size) / 3);
-  width: calc(var(--board-size) / 3);
-  cursor: pointer;
-}
-
-.grid-item:hover {
-  background-color: aliceblue;
-}
+/*# sourceMappingURL=index.css.map */

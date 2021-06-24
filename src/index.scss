@@ -1,0 +1,16 @@
+@import "./components/variables";
+
+#root {
+  position: absolute;
+  width: calc(#{$board-size} + 4 * #{$border});
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#mode {
+  display: grid;
+  grid-template-areas:
+    "p1 comp"
+    "p1 p2";
+}

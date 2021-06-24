@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import Grid from "./grid";
 import PostGame from "./postgame";
+import "./game.css";
+
+import { StrokeLine, StrokeSlant } from "./strokes";
 
 class Game extends Component {
   constructor(props) {
@@ -19,12 +22,14 @@ class Game extends Component {
     if (!this.state.boardWon) {
       const index = parseInt(e.target.getAttribute("index"));
       let displayGrid = [...this.state.displayGrid];
-      if (!displayGrid[index]) {
+      console.log(index);
+      if (index >= 0 && !displayGrid[index]) {
         const currentTurn = this.state.turn;
         displayGrid[index] = currentTurn === 1 ? "x" : "o";
 
         await this.setState({ turn: currentTurn === 1 ? 2 : 1, displayGrid });
         this.checkBoard(currentTurn);
+        console.log(displayGrid);
       }
     }
   };
@@ -57,6 +62,9 @@ class Game extends Component {
       if (prevturn === 1) scoreOne++;
       else scoreTwo++;
 
+      console.log(
+        `${prevturn === 1 ? "Player 1" : this.state.playerTwo} has won`
+      );
       this.setState({ scoreOne, scoreTwo, boardWon: true });
       return;
     }
@@ -70,24 +78,35 @@ class Game extends Component {
 
   render() {
     return (
-      <div id="board">
-        {this.state.displayGrid.map((mark, index) => (
-          <Grid
-            key={index}
-            mark={mark}
-            index={index}
-            handleClick={this.handleClick}
-          />
-        ))}
-        <h4>Score Board</h4>
-        <p>Player 1: {this.state.scoreOne}</p>
-        <p>
-          {this.state.playerTwo}: {this.state.scoreTwo}
-        </p>
+      <React.Fragment>
+        {this.state.boardWon && <StrokeLine />}
+        {this.state.boardWon && <StrokeSlant />}
+        <div id="board" className={this.state.boardWon ? "disabled" : ""}>
+          {this.state.displayGrid.map((mark, index) => (
+            <Grid
+              key={index}
+              mark={mark}
+              index={index}
+              handleClick={this.handleClick}
+            />
+          ))}
+        </div>
         {this.state.boardWon && (
           <PostGame playAgain={this.playAgain} quitGame={this.props.quitGame} />
         )}
-      </div>
+        <div id="game-info">
+          <h4>Turn</h4>
+          <h4>Score Board</h4>
+          <p className={"info-item" + (this.state.turn === 1 ? " active" : "")}>
+            Player 1
+          </p>
+          <p>{this.state.scoreOne}</p>
+          <p className={"info-item" + (this.state.turn === 2 ? " active" : "")}>
+            {this.state.playerTwo}
+          </p>
+          <p>{this.state.scoreTwo}</p>
+        </div>
+      </React.Fragment>
     );
   }
 }
