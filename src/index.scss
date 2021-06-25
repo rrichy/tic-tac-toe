@@ -1,4 +1,32 @@
 @import "./components/variables";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap");
+
+*,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+  color: rgb(244, 244, 244);
+  font-weight: 700;
+  font-size: x-large;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(0deg, #0c1b2d 0%, #232682 50%, #070525 100%);
+}
+
+button {
+  background: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 1rem 1rem;
+  // font-size: calc(#{$board-size} * 0.08);
+  &:hover {
+    animation: glow 3s ease-in-out infinite alternate;
+  }
+}
 
 #root {
   position: absolute;
@@ -13,4 +41,19 @@
   grid-template-areas:
     "p1 comp"
     "p1 p2";
+  text-align: center;
+  align-items: center;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 4px #fff, 0 0 6px #fff, 0 0 9px $glow-high,
+      0 0 12px $glow-high, 0 0 15px $glow-high, 0 0 18px $glow-high,
+      0 0 21px $glow-high;
+  }
+  to {
+    text-shadow: 0 0 6px #fff, 0 0 9px $glow-low, 0 0 12px $glow-low,
+      0 0 15px $glow-low, 0 0 18px $glow-low, 0 0 21px $glow-low,
+      0 0 24px $glow-low;
+  }
 }

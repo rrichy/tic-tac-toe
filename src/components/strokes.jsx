@@ -52,12 +52,13 @@ const StrokeO = ({ strokeColor = "red" }) => {
   );
 };
 
-const StrokeLine = ({ strokeColor = "black" }) => {
+const StrokeLine = ({ strokeColor = "black", transform = "" }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 100 100"
       className="l-stroke"
+      style={{ transform }}
     >
       <line
         className="l-stroke"
@@ -71,18 +72,21 @@ const StrokeLine = ({ strokeColor = "black" }) => {
           stroke: strokeColor,
           strokeWidth: "4",
           strokeLinecap: "round",
+          strokeDashoffset: "68",
+          strokeDasharray: "68",
         }}
       />
     </svg>
   );
 };
 
-const StrokeSlant = ({ strokeColor = "black" }) => {
+const StrokeSlant = ({ strokeColor = "black", transform = "" }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 100 100"
       className="s-stroke"
+      style={{ transform }}
     >
       <line
         className="s-stroke"
@@ -96,6 +100,8 @@ const StrokeSlant = ({ strokeColor = "black" }) => {
           stroke: strokeColor,
           strokeWidth: "4",
           strokeLinecap: "round",
+          strokeDashoffset: "96",
+          strokeDasharray: "96",
         }}
       />
     </svg>

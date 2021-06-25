@@ -5,6 +5,9 @@ import "./game.css";
 
 import { StrokeLine, StrokeSlant } from "./strokes";
 
+let lineTransform = "",
+  slantTransform = "";
+
 class Game extends Component {
   constructor(props) {
     super(props);
@@ -15,6 +18,7 @@ class Game extends Component {
       scoreTwo: 0,
       displayGrid: Array(9).fill(),
       boardWon: false,
+      lineType: 1, //1 -H/V, 2 - Slant
     };
   }
 
@@ -51,13 +55,30 @@ class Game extends Component {
     ];
 
     let state = winningState.map((c) =>
-      c.map((i) => this.state.displayGrid[i])
-    );
-    if (
-      state.some((c) => c.every((m) => m === "x") || c.every((m) => m === "o"))
-    ) {
+        c.map((i) => this.state.displayGrid[i])
+      ),
+      winning = state.findIndex(
+        (c) => c.every((m) => m === "x") || c.every((m) => m === "o")
+      );
+
+    // console.log(winning);
+
+    if (winning >= 0) {
       console.log("board is won");
-      let { scoreOne, scoreTwo } = this.state;
+      let { scoreOne, scoreTwo, lineType } = this.state;
+
+      if (winning <= 5) {
+        lineType = 1;
+        if (winning === 0) lineTransform = "translateY(-33.33%)";
+        if (winning === 1) lineTransform = "";
+        if (winning === 2) lineTransform = "translateY(33.33%)";
+        if (winning === 3) lineTransform = "rotate(90deg) translateY(33.333%)";
+        if (winning === 4) lineTransform = "rotate(90deg)";
+        if (winning === 5) lineTransform = "rotate(90deg) translateY(-33.333%)";
+      } else {
+        lineType = 2;
+        if (winning === 7) slantTransform = "rotate(90deg)";
+      }
 
       if (prevturn === 1) scoreOne++;
       else scoreTwo++;
@@ -65,7 +86,7 @@ class Game extends Component {
       console.log(
         `${prevturn === 1 ? "Player 1" : this.state.playerTwo} has won`
       );
-      this.setState({ scoreOne, scoreTwo, boardWon: true });
+      this.setState({ scoreOne, scoreTwo, boardWon: true, lineType });
       return;
     }
 
@@ -79,8 +100,23 @@ class Game extends Component {
   render() {
     return (
       <React.Fragment>
-        {this.state.boardWon && <StrokeLine />}
-        {this.state.boardWon && <StrokeSlant />}
+        <div id="game-info">
+          <p className={"info-item" + (this.state.turn === 1 ? " active" : "")}>
+            Player 1
+          </p>
+          <p>
+            {this.state.scoreOne}:{this.state.scoreTwo}
+          </p>
+          <p className={"info-item" + (this.state.turn === 2 ? " active" : "")}>
+            {this.state.playerTwo}
+          </p>
+        </div>
+        {this.state.boardWon && this.state.lineType === 1 && (
+          <StrokeLine transform={lineTransform} />
+        )}
+        {this.state.boardWon && this.state.lineType === 2 && (
+          <StrokeSlant transform={slantTransform} />
+        )}
         <div id="board" className={this.state.boardWon ? "disabled" : ""}>
           {this.state.displayGrid.map((mark, index) => (
             <Grid
@@ -94,18 +130,6 @@ class Game extends Component {
         {this.state.boardWon && (
           <PostGame playAgain={this.playAgain} quitGame={this.props.quitGame} />
         )}
-        <div id="game-info">
-          <h4>Turn</h4>
-          <h4>Score Board</h4>
-          <p className={"info-item" + (this.state.turn === 1 ? " active" : "")}>
-            Player 1
-          </p>
-          <p>{this.state.scoreOne}</p>
-          <p className={"info-item" + (this.state.turn === 2 ? " active" : "")}>
-            {this.state.playerTwo}
-          </p>
-          <p>{this.state.scoreTwo}</p>
-        </div>
       </React.Fragment>
     );
   }
