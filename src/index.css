@@ -1,3 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap");
+*,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+  color: #f4f4f4;
+  font-weight: 700;
+  font-size: x-large;
+}
+
+body {
+  height: 100vh;
+  background: -webkit-gradient(linear, left bottom, left top, from(#0c1b2d), color-stop(50%, #232682), to(#070525));
+  background: linear-gradient(0deg, #0c1b2d 0%, #232682 50%, #070525 100%);
+}
+
+button {
+  background: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 1rem 1rem;
+}
+
+button:hover {
+  -webkit-animation: glow 3s ease-in-out infinite alternate;
+          animation: glow 3s ease-in-out infinite alternate;
+}
+
 #root {
   position: absolute;
   width: calc(320px + 4 * 2px);
@@ -11,5 +41,27 @@
   display: -ms-grid;
   display: grid;
       grid-template-areas: "p1 comp" "p1 p2";
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 4px #fff, 0 0 6px #fff, 0 0 9px #ff14d8, 0 0 12px #ff14d8, 0 0 15px #ff14d8, 0 0 18px #ff14d8, 0 0 21px #ff14d8;
+  }
+  to {
+    text-shadow: 0 0 6px #fff, 0 0 9px #af0993, 0 0 12px #af0993, 0 0 15px #af0993, 0 0 18px #af0993, 0 0 21px #af0993, 0 0 24px #af0993;
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 4px #fff, 0 0 6px #fff, 0 0 9px #ff14d8, 0 0 12px #ff14d8, 0 0 15px #ff14d8, 0 0 18px #ff14d8, 0 0 21px #ff14d8;
+  }
+  to {
+    text-shadow: 0 0 6px #fff, 0 0 9px #af0993, 0 0 12px #af0993, 0 0 15px #af0993, 0 0 18px #af0993, 0 0 21px #af0993, 0 0 24px #af0993;
+  }
 }
 /*# sourceMappingURL=index.css.map */

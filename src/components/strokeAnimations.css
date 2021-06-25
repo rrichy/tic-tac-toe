@@ -15,14 +15,14 @@
 
 .l-stroke {
   position: absolute;
-  stroke-dasharray: 67;
-  animation: strokeL 0.5s forwards;
+  stroke-dasharray: 68;
+  animation: strokeL 0.5s forwards 0.5s;
 }
 
 .s-stroke {
   position: absolute;
-  stroke-dasharray: 95;
-  animation: strokeS 0.5s forwards;
+  stroke-dasharray: 96;
+  animation: strokeS 0.5s forwards 0.5s;
 }
 
 @keyframes strokeX {
@@ -47,7 +47,7 @@
 
 @keyframes strokeL {
   from {
-    stroke-dashoffset: 67;
+    stroke-dashoffset: 68;
   }
 
   to {
@@ -57,7 +57,7 @@
 
 @keyframes strokeS {
   from {
-    stroke-dashoffset: 95;
+    stroke-dashoffset: 96;
   }
 
   to {
