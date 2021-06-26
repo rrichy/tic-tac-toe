@@ -1,10 +1,15 @@
 import React from "react";
 
-const PostGame = ({ playAgain, quitGame }) => {
+const PostGame = ({ winner, playAgain, quitGame }) => {
   return (
     <div id="post-game">
-      <button onClick={playAgain}>Play Again</button>
-      <button onClick={quitGame}>Quit</button>
+      <p style={{ gridArea: "win" }}>{winner}</p>
+      <button onClick={playAgain} style={{ gridArea: "again" }}>
+        Play Again
+      </button>
+      <button onClick={quitGame} style={{ gridArea: "quit" }}>
+        Quit
+      </button>
     </div>
   );
 };
